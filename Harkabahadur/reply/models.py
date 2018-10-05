@@ -6,5 +6,11 @@ class response(models.Model):
     values = models.CharField(max_length=200)
 
 
-def __str__(self):
-    return self.name + "- " + self.values
+class log(models.Model):
+    selectedButtonId = models.CharField(max_length=20)
+    timeValue = models.CharField(max_length=20)
+    tolerance = models.CharField(max_length=20)
+    timeStamp = models.CharField(max_length=20)
+
+    def __str__(self):
+        return 'TIMESTAMP: ' + self.timeStamp

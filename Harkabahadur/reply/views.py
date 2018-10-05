@@ -1,3 +1,6 @@
+import datetime
+import time
+
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -24,19 +27,27 @@ from django.views.decorators.csrf import csrf_exempt
 
 import json
 
+from . import models
+
 
 @csrf_exempt
 def test(request):
     if request.method == 'POST':
-        # f = forms.Form(request.POST)
-        # if f.is_valid():
-        #     print(f.cleaned_data)
-        print(dir(request.POST))
-        print()
         for i in request.POST.lists():
             data = json.loads(i[0])
             break
-        print(data['name'], data['age'])
-        # print(a[0])
-        # print('****', request.readlines())
+        selectedButtonId = data['selectedButtonId']
+        timeValue = data['timeValue']
+        tolerance = data['tolerance']
+        ts = time.time()
+        timeStamp = datetime.datetime.fromtimestamp(ts).strftime(
+            '%Y-%m-%d %H:%M:%S')
+        print(selectedButtonId, timeValue, tolerance, timeStamp)
+
+        models.log(
+            selectedButtonId=selectedButtonId,
+            timeValue=timeValue,
+            tolerance=tolerance,
+            timeStamp=timeStamp).save()
+        print('\n\n\nModel Saved...\n\n\n')
     return HttpResponse('Helo')
