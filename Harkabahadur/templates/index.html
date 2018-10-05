@@ -1,56 +1,292 @@
 <!DOCTYPE html>
-
+<html lang="en">
 {% load static %}
-<html lang="en" dir="ltr">
 
 <head>
+
     <meta charset="utf-8">
-    <title>SLEEP</title>
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>NINDRA</title>
+    <!-- "{% static '' %}" -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/freelancer.min.css' %}" rel="stylesheet">
+
+    <script>
+        const get_data = () => {
+            let but = document.getElementById('start_stop');
+            if (but.innerHTML == 'START') {
+            but.innerHTML = 'STOP';
+
+                but.dataset.target = '#myModal2';
+            }
+            else {
+
+                but.innerHTML = 'START';
+                but.dataset.target = '#myModal';
+            }
+
+        }
+    </script>
 </head>
 
+<body id="page-top">
 
-<body>
-    <div class="container">
-        <div class="jumbotron">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">NINDRA</a>
+            <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button"
+                data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">USE IT</a>
+                    </li>
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">LOG</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container">
+            <img class="img-fluid mb-5 d-block mx-auto" src="{% static 'img/logo.png' %}" alt="" align='center'>
+            <h1 class="text-uppercase mb-0">NINDRA</h1>
+            <hr class="star-light">
+            <h2 class="font-weight-light mb-0">SLEEP ANALYSER</h2>
+        </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="text-center text-uppercase text-secondary mb-0">USE IT</h2>
+            <hr class="star-dark mb-5">
             <div class="row">
-                <div class="col-xs-8">
-                    <h1>Nindra</h1>
-                    <p>Majjale sutnus.</p>
+                <div class="col-md-6 col-lg-4">
+                    <img class="img-fluid" src="{% static 'img/portfolio/sleep.png' %}" alt="">
                 </div>
-                <div class="col-xs-4">
-                    <img src='{% static "image/logo.png" %}' class="img-responsive" />
+                <!-- status of device -->
+                <div class="col-md-6 col-lg-4">
+                    <br /><br /><br /><br />
+                    <h1 style="color:GREEN" align=center>ACTIVE</h1>
+                </div>
+                <!-- button 1 -->
+                <div class="col-md-12 col-lg-4" style=" align-items: center;">
+                    <br /><br /><br />
+                    <center><button type="button" id='start_stop' class="btn btn-outline-info" data-toggle="modal"
+                            data-target="#myModal" style="width: 100px;height: 100px;border-radius: 100%;">START</button></center>
                 </div>
 
             </div>
         </div>
+    </section>
 
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Location</h4>
+                    <p class="lead mb-0">Pulchowk, Lalitpur
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
+                <div class="col-md-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Around the Web</h4>
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fab fa-fw fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fab fa-fw fa-google-plus-g"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fab fa-fw fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fab fa-fw fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                                <i class="fab fa-fw fa-dribbble"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="text-uppercase mb-4">ABOUT US</h4>
+                    <p class="lead mb-0">WE ASSURE BETTER SLEEP EXPERIENCE</p>
                 </div>
             </div>
         </div>
+    </footer>
 
-
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
+    <div class="copyright py-4 text-center text-white">
+        <div class="container">
+            <small>Copyright &copy; HARKABAHADUR</small>
+        </div>
     </div>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-to-top d-lg-none position-fixed ">
+        <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">SURVEY</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h5>How are you feeling now?</h5>
+
+                    <form class=" form-group m-3">
+
+                        <div class="radio">
+                            <label><input type="radio" name="optradio" checked>&nbsp&nbsp1: Feeling low </label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="optradio">&nbsp&nbsp2 </label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="optradio">&nbsp&nbsp3 </label>
+                        </div>
+                        <div class="radio ">
+                            <label><input type="radio" name="optradio">&nbsp&nbsp4 </label>
+                        </div>
+                        <div class="radio ">
+                            <label><input type="radio" name="optradio">&nbsp&nbsp5: Feeling Calm </label>
+                        </div>
+
+
+                        <h5> Input Time For Alarm:<br /><br /></h5>
+                        <input type="time" /><br />Input tolerance :
+                        <select>
+                            <option value="volvo">15 min</option>
+                            <option value="saab">30 min</option>
+                            <option value="opel">45 min</option>
+                            <option value="audi">1 hr</option>
+                        </select>
+
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button id="submit1" type="button" class="btn btn-success" data-dismiss="modal" onclick='get_data()'>Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="myModal2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">SURVEY</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h5>How are you feelin89h9u9jiog now?</h5>
+
+                    <form class=" form-group m-3">
+
+                        <div class="radio">
+                            <label><input type="radio" name="optradio" checked>&nbsp&nbsp1: Feeling low </label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="optradio">&nbsp&nbsp2 </label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="optradio">&nbsp&nbsp3 </label>
+                        </div>
+                        <div class="radio ">
+                            <label><input type="radio" name="optradio">&nbsp&nbsp4 </label>
+                        </div>
+                        <div class="radio ">
+                            <label><input type="radio" name="optradio">&nbsp&nbsp5: Feeling Calm </label>
+                        </div>
+
+
+                        <h5> Input Time For Alarm:<br /><br /></h5>
+                        <input type="time" /><br />Input tolerance :
+                        <select>
+                            <option value="volvo">15 min</option>
+                            <option value="saab">30 min</option>
+                            <option value="opel">45 min</option>
+                            <option value="audi">1 hr</option>
+                        </select>
+
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button id="submit1" type="button" class="btn btn-success" data-dismiss="modal" onclick='get_data()'>Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+    <script src="{% static 'js/contact_me.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'js/freelancer.min.js' %}"></script>
+
 </body>
 
 </html>
