@@ -27,10 +27,26 @@
     <script>
     const get_data=()=>{
       let but = document.getElementById('start_stop');
-      if(but.innerHTML=='START')
-      {but.innerHTML='STOP';
 
+      if(but.innerHTML=='START')
+      {
+        but.innerHTML='STOP';
         but.dataset.target = '#myModal2';
+        let selectedButtonId=null;
+        const str = 'ra';
+        for (var i = 0; i < 5; i++) {
+          if(document.getElementById(str+(i+1)).checked){
+            selectedButtonId = str + (i + 1);
+            break;
+          }
+        }
+        const timeValue = document.getElementById('timeField').value;
+        const tolerance = document.getElementById('toleranceField').value;
+
+        const dataSend = {
+          selectedButtonId, timeValue, tolerance
+        }
+        console.log(JSON.stringify(dataSend));
     }
       else {
 
@@ -39,6 +55,24 @@
       }
 
     }
+
+
+    function loadXMLDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("active_or_not").innerHTML =this.responseText;
+    }
+  };
+  xhttp.open("GET", "/reply/active/", true);
+  xhttp.send();
+}
+
+    window.setInterval(function(){
+        loadXMLDoc();
+    }, 10000);
+
+
     </script>
   </head>
 
@@ -88,7 +122,7 @@
           <!-- status of device -->
           <div class="col-md-6 col-lg-4">
               <br /><br /><br /><br />
-              <h1 style="color:GREEN" align=center>ACTIVE</h1>
+              <h1 align=center id="active_or_not"><span  style="color:GREEN">ACTIVE</span></h1>
           </div>
           <!-- button 1 -->
           <div class="col-md-12 col-lg-4" style=" align-items: center;">
@@ -174,40 +208,40 @@
         <div class="modal-body">
           <h5>How are you feeling now?</h5>
 
-          <form class=" form-group m-3">
+          <form class=" form-group m-3" action='/reply/message/' id='form1'>
 
               <div class="radio">
-                  <label><input type="radio" name="optradio" checked>&nbsp&nbsp1: Feeling low </label>
+                  <label><input type="radio" id='ra1' name="r" checked>&nbsp&nbsp1: Feeling low </label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="optradio">&nbsp&nbsp2 </label>
+                  <label><input type="radio" id='ra2' name="r">&nbsp&nbsp2 </label>
                 </div>
                 <div class="radio">
-                  <label><input type="radio" name="optradio" >&nbsp&nbsp3 </label>
+                  <label><input type="radio" id='ra3' name="r" >&nbsp&nbsp3 </label>
                 </div>
                 <div class="radio ">
-                  <label><input type="radio" name="optradio" >&nbsp&nbsp4 </label>
+                  <label><input type="radio" id='ra4' name="r" >&nbsp&nbsp4 </label>
                 </div>
                 <div class="radio ">
-                  <label><input type="radio" name="optradio" >&nbsp&nbsp5: Feeling Calm </label>
+                  <label><input type="radio" id='ra5' name="r" >&nbsp&nbsp5: Feeling Calm </label>
                 </div>
 
 
                 <h5>  Input Time For Alarm:<br /><br /></h5>
-                  <input type="time" /><br />Input tolerance :
-                  <select>
-                     <option value="volvo">15 min</option>
-                     <option value="saab">30 min</option>
-                     <option value="opel">45 min</option>
-                     <option value="audi">1 hr</option>
+                  <input type="time" id='timeField'/><br />Input tolerance :
+                  <select id='toleranceField'>
+                     <option value="15">15 min</option>
+                     <option value="30">30 min</option>
+                     <option value="45">45 min</option>
+                     <option value="60">1 hr</option>
                   </select>
 
-  </form>
-        </div>
 
+        </div>
+</form>
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button  id ="submit1" type="button" class="btn btn-success" data-dismiss="modal" onclick='get_data()'>Submit</button>
+          <button  id ="submit1" class="btn btn-success" data-dismiss="modal" onclick='get_data()'>Submit</button>
         </div>
 
       </div>
@@ -250,10 +284,10 @@
               <h5>  Input Time For Alarm:<br /><br /></h5>
                 <input type="time" /><br />Input tolerance :
                 <select>
-                   <option value="volvo">15 min</option>
-                   <option value="saab">30 min</option>
-                   <option value="opel">45 min</option>
-                   <option value="audi">1 hr</option>
+                   <option value="15">15 min</option>
+                   <option value="30">30 min</option>
+                   <option value="45">45 min</option>
+                   <option value="60">1 hr</option>
                 </select>
 
 </form>
