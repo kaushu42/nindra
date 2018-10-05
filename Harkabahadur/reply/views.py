@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .models import response
+from django import forms
+
+# import requests
 
 
 def index(request):
@@ -15,3 +18,25 @@ def index(request):
             return HttpResponse('The data is $' + sensor_value + '#')
     return render(request, 'index.html')
     # return HttpResponse('You are at the reply homepage')
+
+
+from django.views.decorators.csrf import csrf_exempt
+
+import json
+
+
+@csrf_exempt
+def test(request):
+    if request.method == 'POST':
+        # f = forms.Form(request.POST)
+        # if f.is_valid():
+        #     print(f.cleaned_data)
+        print(dir(request.POST))
+        print()
+        for i in request.POST.lists():
+            data = json.loads(i[0])
+            break
+        print(data['name'], data['age'])
+        # print(a[0])
+        # print('****', request.readlines())
+    return HttpResponse('Helo')
